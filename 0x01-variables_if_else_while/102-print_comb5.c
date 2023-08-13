@@ -6,32 +6,24 @@
  */
 int main(void)
 {
-	int a;
-	int b;
-	int c;
-	int d;
+	int x, y;
 
-	for (a = 0 ; a <= 9 ; a++)
+	for (x = 0 ; x <= 98 ; x++)
 	{
-		for (b = 0 ; b <= 9 ;b++)
+		for (y = 1 ; y <= 99 ; y++)
 		{
-			for (c = 0 ; c <= 9 ; c++)
+			putchar('0' + x / 10);
+			putchar('0' + x % 10);
+			putchar(' ');
+			putchar('0' + y / 10);
+			putchar('0' + y % 10);
+			if (x == 98 && y == 99)
 			{
-				for (d = 0 ; d <= 9 ; d++)
-				{
-					if ((d != 0 || c != 0) && (a != b || a != c || a != d) && (a != c || b != d))
-					{
-					putchar('0' + a);
-					putchar('0' + b);
-					putchar(' ');
-					putchar('0' + c);
-					putchar('0' + d);
-					putchar(',');
-					putchar(' ');
-					}
-				}
+				continue;
 			}
-	        }
+			putchar(',');
+			putchar(' ');
+		}
 	}
 	putchar('\n');
 	return (0);
