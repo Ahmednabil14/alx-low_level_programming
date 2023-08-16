@@ -1,7 +1,8 @@
 #include "main.h"
 /**
  * print_times_table - prints the n times table, starting with 0
- * If n is greater than 15 or less than 0 the function should not print anything
+ * If n is greater than 15 or less than 0 the function should not
+ * print anything
  * @n: times table
  * Return: void
  */
@@ -28,13 +29,13 @@ void print_times_table(int n)
 				else if (res <= 99)
 				{
 					_putchar(' ');
-					_putchar((res/10) + 48);
+					_putchar((res / 10) + 48);
 					_putchar((res % 10) + 48);
 				}
 				else
 				{
-					_putchar((res/100) + 48);
-					_putchar((res/10) % 10 + 48);
+					_putchar((res / 100) + 48);
+					_putchar((res / 10) % 10 + 48);
 					_putchar((res % 10) + 48);
 				}
 			}
