@@ -8,22 +8,19 @@
 int main(void)
 {
 	int i;
-	int x = 1;
-	int y = 1;
-	int sum = 0;
+	long int x = 1;
+	long int y = 1;
+	long int sum = 0;
 
-	for (i = 0 ; i <= 20 ; i++)
+	for (i = 0 ; i <= 50 ; i++)
 	{
-		if (x <= 50)
+		printf("%ld", x);
+		sum = x + y;
+		x = y;
+		y = sum;
+		if (i != 50)
 		{
-			printf("%d", x);
-			sum = x + y;
-			x = y;
-			y = sum;
-			if (x != 55)
-			{
-				printf(", ");
-			}
+			printf(", ");
 		}
 	}
 	printf("\n");
