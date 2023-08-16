@@ -9,16 +9,16 @@ int main(void)
 {
 	int i;
 	long int x = 1;
-	long int y = 1;
+	long int y = 2;
 	long int sum = 0;
 
-	for (i = 0 ; i <= 50 ; i++)
+	for (i = 0 ; i <= 49 ; i++)
 	{
 		printf("%ld", x);
 		sum = x + y;
 		x = y;
 		y = sum;
-		if (i != 50)
+		if (i != 49)
 		{
 			printf(", ");
 		}
