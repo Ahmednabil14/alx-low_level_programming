@@ -1,0 +1,32 @@
+#include "main.h"
+/**
+ * times_table - Write a function that prints the 9 times table, starting
+ * with 0
+ * Return: void
+ */
+void times_table(void)
+{
+	int i, multi, res;
+
+	for (i = 0 ; i <= 9 ; i++)
+	{
+		_putchar('0');
+		for (multi = 1 ; multi <= 9 ; multi++)
+		{
+			_putchar(',');
+			_putchar(' ');
+			res = i * multi;
+			if (res <= 9)
+			{
+				_putchar(' ');
+				_putchar('0' + res);
+			}
+			else
+			{
+				_putchar((res / 10) + '0');
+				_putchar((res % 10) + '0');
+			}
+		}
+		_putchar('\n');
+	}
+}
