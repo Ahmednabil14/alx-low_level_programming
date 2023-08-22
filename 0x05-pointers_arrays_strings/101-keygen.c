@@ -18,4 +18,5 @@ int main(void)
 		printf("%c", rand() % 127);
 	}
 	printf("\n");
+	return (0);
 }
