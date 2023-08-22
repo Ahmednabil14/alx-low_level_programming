@@ -7,12 +7,5 @@
  */
 int _atoi(char *s)
 {
-	if (atoi(s) != '\0')
-	{
-		return (atoi(s));
-	}
-	else
-	{
-		return (0);
-	}
+	return (atoi(s));
 }
