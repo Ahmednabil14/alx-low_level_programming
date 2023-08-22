@@ -15,7 +15,7 @@ int main(void)
 
 	for (i = 0 ; i <= 14 ; i++)
 	{
-		printf("%c", rand() % 127);
+		printf("%c", rand() % 128);
 	}
 	printf("\n");
 	return (0);
