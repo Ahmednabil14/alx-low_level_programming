@@ -1,0 +1,24 @@
+#include "main.h"
+/**
+ * strpbrk - function that searches a string for any of a set of bytes.
+ * @s: string
+ * @accept: accepted string
+ * Return: accepted string
+ */
+char *_strpbrk(char *s, char *accept)
+{
+	while (*s)
+	{
+		while (*accept)
+		{
+			if (*s == *accept)
+			{
+				return (s);
+				break;
+			}
+			accept++;
+		}
+		s++;
+	}
+	return (0);
+}
