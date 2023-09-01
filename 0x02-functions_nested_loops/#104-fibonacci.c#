@@ -1,0 +1,26 @@
+#include "main.h"
+#include <stdio.h>
+/**
+ * main - first 98 fibonacci
+ *
+ * Return: Always 0 (Success)
+ */
+int main(
+	int
+	long int x =
+	long int y =
+	long int sum =
+	for (i = 0 ; i <= 49 ;
+		{
+			printf("%ld",
+			sum = x + y;
+			x = y;
+			y = sum;
+			       if (i != 49)
+			       {
+				       printf(", ");
+			       }
+			       }
+        printf("\n");
+        return (0);
+}
