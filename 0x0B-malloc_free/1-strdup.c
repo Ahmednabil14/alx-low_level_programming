@@ -30,6 +30,7 @@ char *_strdup(char *str)
 	{
 		*(p + i) = str[i];
 	}
+	*(p + i + 1) = '\0';
 	return (p);
 	free(p);
 }
