@@ -9,18 +9,18 @@
  */
 char *_strdup(char *str)
 {
-	int c = 1, i;
+	int c = 0, i;
 	char *p;
 
 	if (str == NULL)
 	{
 		return ('\0');
 	}
-	while (*str != '\0')
+	while (str[c] != '\0')
 	{
 		c++;
-		str++;
 	}
+	c++;
 	p = (char *) malloc(c * sizeof(char) + 1);
 	if (p == NULL)
 	{
