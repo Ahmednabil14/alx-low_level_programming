@@ -19,11 +19,12 @@ char *create_array(unsigned int size, char c)
 		{
 			*(p + i) = c;
 		}
+		return (p);
 	}
 	else
 	{
 		return ('\0');
 	}
-	return (p);
+	return (0);
 	free(p);
 }
