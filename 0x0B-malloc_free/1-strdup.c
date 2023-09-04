@@ -21,8 +21,7 @@ char *_strdup(char *str)
 		c++;
 		str++;
 	}
-	c--;
-	p = (char *) malloc(c * sizeof(char));
+	p = (char *) malloc(c * sizeof(char) + 1);
 	if (p == NULL)
 	{
 		return (NULL);
