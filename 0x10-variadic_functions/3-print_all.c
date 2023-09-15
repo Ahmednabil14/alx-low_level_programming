@@ -9,14 +9,23 @@
  */
 void print_all(const char * const format, ...)
 {
-	size_t i = 0;
-	size_t j = 0;
+	size_t i = 0, j = 0;
 	va_list list;
-	char *s;
+	char *arr = "cifs", *s;
 
 	va_start(list, format);
 	while (format[i])
 	{
+		size_t c = 0;
+
+		while  (arr[c])
+		{
+			if (format[i] == arr[c] && j != 0)
+			{
+				printf(", ");
+				break;
+			} c++;
+		}
 		switch (format[i])
 		{
 		case 'c':
@@ -29,25 +38,15 @@ void print_all(const char * const format, ...)
 			printf("%f", va_arg(list, double)), j = 1;
 			break;
 		case 's':
-			s = va_arg(list, char *);
+			s = va_arg(list, char *), j = 1;
 			if (!s)
 			{
 				printf("(nil)");
 				break;
 			}
 			printf("%s", s);
-			j = 1;
 			break;
-		}
-		if (j == 1 && (format[i] == 'c' ||
-			       format[i] == 'i'
-			       || format[i] == 'f' ||
-			       format[i] == 's'))
-		{
-			printf(", ");
-		}
-		i++;
-		j = 0;
+		} i++;
 	}
-	printf("\n");
+	printf("\n"), va_end(list);
 }
