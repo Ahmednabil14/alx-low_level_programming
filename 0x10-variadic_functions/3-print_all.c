@@ -14,7 +14,7 @@ void print_all(const char * const format, ...)
 	char *arr = "cifs", *s;
 
 	va_start(list, format);
-	while (format[i])
+	while (format[i] && format)
 	{
 		size_t c = 0;
 
