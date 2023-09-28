@@ -1,8 +1,0 @@
-#ifndef _BITWISE_
-#define _BITWISE_
-#include <stdio.h>
-#include <stdlub.h>
-#include <string.h>
-unsigned int binary_to_uint(const char *b);
-int _putchar(char c);
-#endif
