@@ -6,7 +6,7 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned int x = 32768, v = 0;
+	unsigned long x = 4294967296, v = 0;
 
 	while (x > 0)
 	{
