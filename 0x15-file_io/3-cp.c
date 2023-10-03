@@ -7,7 +7,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int fd1, r, w, fd2, fd1_close, fd2_close;
+	int fd1, r = 1024, w, fd2, fd1_close, fd2_close;
 	char s[1024];
 	if (argc != 3)
 	{
@@ -26,17 +26,20 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	r = read(fd1, s, 1024);
-	if (r == -1)
+	while (r == 1024)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-	w = write(fd2, s, r);
-	if (w == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
+		r = read(fd1, s, 1024);
+		if (r == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+		w = write(fd2, s, r);
+		if (w == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
 	}
 	fd1_close = close(fd1);
 	fd2_close = close(fd2);
