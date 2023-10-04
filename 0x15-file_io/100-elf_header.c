@@ -160,7 +160,8 @@ void print_data(Elf64_Ehdr h)
  */
 int main(int argc, char *argv[])
 {
-	int fd, r;
+	int fd;
+	ssize_t r;
 	Elf64_Ehdr head;
 
 	if (argc != 2)
@@ -172,7 +173,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	r = read(fd, &head, sizeof(head));
-	if (r == -1 || r != sizeof(head))
+	if (r < 1 || r != sizeof(head))
 	{
 		dprintf(STDERR_FILENO, "%s", "can not read the file");
 		exit(98);
