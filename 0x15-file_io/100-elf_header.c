@@ -1,5 +1,6 @@
 #include "main.h"
 #include <elf.h>
+void print_data(Elf64_Ehdr h);
 void print_magic(Elf64_Ehdr h);
 void print_class(Elf64_Ehdr h);
 /**
@@ -36,7 +37,21 @@ void print_class(Elf64_Ehdr h)
         if (h.e_ident[EI_CLASS] == ELFCLASS64)
                 printf("ELF64\n");
 }
-
+/**
+ * print_data - print data
+ * @h: header
+ * Return: void
+ */
+void print_data(Elf64_Ehdr h)
+{
+	printf("  Data:                              ");
+	if (h.e_ident[EI_DATA] == ELFDATANONE)
+		printf("none\n");
+	if (h.e_ident[EI_DATA] == ELFDATA2LSB)
+		printf("2's complement, little endian\n");
+	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
+		printf("2's complement, big endian\n");
+}
 /**
  * main - program that displays the information contained in the ELF
  * header at the start of an ELF file.
@@ -70,6 +85,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "%s", "not ELF file");
 	print_magic(head);
 	print_class(head);
+	print_data(head);
 	if (close(fd))
 		dprintf(STDERR_FILENO, "%s", "error close");
 	return (0);
