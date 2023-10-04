@@ -109,17 +109,17 @@ void print_version(Elf64_Ehdr h)
  */
 void print_magic(Elf64_Ehdr h)
 {
-        int i;
+	int i;
 
-        printf("  Magic:   ");
-        for ( i = 0 ; i < EI_NIDENT ; i++)
-        {
-                printf("%02x ", h.e_ident[i]);
-                if (i == EI_NIDENT - 1)
-                {
-                        printf("\n");
-                }
-        }
+	printf("  Magic:   ");
+	for (i = 0 ; i < EI_NIDENT ; i++)
+	{
+		printf("%02x ", h.e_ident[i]);
+		if (i == EI_NIDENT - 1)
+		{
+			printf("\n");
+		}
+	}
 }
 /**
  * print_class - function that print class
@@ -128,13 +128,13 @@ void print_magic(Elf64_Ehdr h)
  */
 void print_class(Elf64_Ehdr h)
 {
-        printf("  Class:                             ");
-        if (h.e_ident[EI_CLASS] == ELFCLASSNONE)
-                printf("none\n");
-        if (h.e_ident[EI_CLASS] == ELFCLASS32)
-                printf("ELF32\n");
-        if (h.e_ident[EI_CLASS] == ELFCLASS64)
-                printf("ELF64\n");
+	printf("  Class:                             ");
+	if (h.e_ident[EI_CLASS] == ELFCLASSNONE)
+		printf("none\n");
+	if (h.e_ident[EI_CLASS] == ELFCLASS32)
+		printf("ELF32\n");
+	if (h.e_ident[EI_CLASS] == ELFCLASS64)
+		printf("ELF64\n");
 }
 /**
  * print_data - print data
