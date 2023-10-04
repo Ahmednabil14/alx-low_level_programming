@@ -3,6 +3,105 @@
 void print_data(Elf64_Ehdr h);
 void print_magic(Elf64_Ehdr h);
 void print_class(Elf64_Ehdr h);
+void print_version(Elf64_Ehdr h);
+void print_osabi(Elf64_Ehdr h);
+void print_type(Elf64_Ehdr h);
+void print_abi(Elf64_Ehdr h);
+void print_entry(Elf64_Ehdr h);
+/**
+ * print_entry - function that print Entry point address
+ * @h: elf header
+ * Return: void
+ */
+void print_entry(Elf64_Ehdr h)
+{
+	printf("  Entry point address:               ");
+	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		h.e_entry = ((h.e_entry << 8) & 0xFF00FF00) |
+			((h.e_entry >> 8) & 0xFF00FF);
+		h.e_entry = (h.e_entry << 16) | (h.e_entry >> 16);
+	}
+	if (h.e_ident[EI_CLASS] == ELFCLASS32)
+	{
+		printf("%#x\n", (unsigned int)h.e_entry);
+	}
+	else
+		printf("%#lx\n", h.e_entry);
+}
+/**
+ * print_type - function that print type
+ * @h: elf header
+ * Return: void
+ */
+void print_type(Elf64_Ehdr h)
+{
+	char *s = (char *) &h.e_type;
+	int i = 0;
+
+	printf("  Type:                              ");
+	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
+		i = 1;
+	if (s[i] == ET_NONE)
+		printf("NONE (None)\n");
+	if (s[i] == ET_REL)
+		printf("REL (Relocatable file)\n");
+	if (s[i] == ET_EXEC)
+		printf("EXEC (Executable file)\n");
+	if (s[i] == ET_DYN)
+		printf("DYN (Shared object file)\n");
+	if (s[i] == ET_CORE)
+		printf("CORE (Core file)\n");
+}
+/**
+ * print_abi - function that print abi version
+ * @h: elf header
+ * Return: void
+ */
+void print_abi(Elf64_Ehdr h)
+{
+	printf("  ABI Version:                       ");
+	printf("%d\n", h.e_ident[EI_ABIVERSION]);
+}
+/**
+ * print_osabi - function that print os abi
+ * @h: elf header
+ * REturn: void
+ */
+void print_osabi(Elf64_Ehdr h)
+{
+	printf("  OS/ABI:                            ");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_NONE)
+		printf("UNIX - System V\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_HPUX)
+		printf("UNIX - HP-UX\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_NETBSD)
+		printf("UNIX - NetBSD\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_LINUX)
+		printf("UNIX - Linux\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_SOLARIS)
+		printf("UNIX - Solaris\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_IRIX)
+		printf("UNIX - IRIX\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_FREEBSD)
+		printf("UNIX - FreeBSD\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_TRU64)
+		printf("UNIX - TRU64\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_ARM)
+		printf("ARM\n");
+	if (h.e_ident[EI_OSABI] == ELFOSABI_STANDALONE)
+		printf("Standalone App\n");
+}
+/**
+ * print_version - function that print version
+ * @h: elf header
+ * Return: void
+ */
+void print_version(Elf64_Ehdr h)
+{
+	printf("  Version:                           ");
+	printf("%d (current)\n", h.e_ident[EI_VERSION]);
+}
 /**
  * print_magic - function that print magic
  * @h: elf header
@@ -86,6 +185,11 @@ int main(int argc, char *argv[])
 	print_magic(head);
 	print_class(head);
 	print_data(head);
+	print_version(head);
+	print_osabi(head);
+	print_abi(head);
+	print_type(head);
+	print_entry(head);
 	if (close(fd))
 		dprintf(STDERR_FILENO, "%s", "error close");
 	return (0);
