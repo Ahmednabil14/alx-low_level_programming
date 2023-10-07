@@ -139,10 +139,12 @@ void print_class(Elf64_Ehdr h)
 	printf("  Class:                             ");
 	if (h.e_ident[EI_CLASS] == ELFCLASSNONE)
 		printf("none\n");
-	if (h.e_ident[EI_CLASS] == ELFCLASS32)
+	else if (h.e_ident[EI_CLASS] == ELFCLASS32)
 		printf("ELF32\n");
-	if (h.e_ident[EI_CLASS] == ELFCLASS64)
+	else if (h.e_ident[EI_CLASS] == ELFCLASS64)
 		printf("ELF64\n");
+	else
+		printf("<unkown: %x>\n", h.e_ident[EI_CLASS]);
 }
 /**
  * print_data - print data
@@ -154,10 +156,12 @@ void print_data(Elf64_Ehdr h)
 	printf("  Data:                              ");
 	if (h.e_ident[EI_DATA] == ELFDATANONE)
 		printf("none\n");
-	if (h.e_ident[EI_DATA] == ELFDATA2LSB)
+	else if (h.e_ident[EI_DATA] == ELFDATA2LSB)
 		printf("2's complement, little endian\n");
-	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
+	else if (h.e_ident[EI_DATA] == ELFDATA2MSB)
 		printf("2's complement, big endian\n");
+	else
+		printf("<unkown: %x>\n", h.e_ident[EI_CLASS]);
 }
 /**
  * main - program that displays the information contained in the ELF
