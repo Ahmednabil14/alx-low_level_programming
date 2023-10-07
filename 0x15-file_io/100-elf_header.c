@@ -119,6 +119,10 @@ void print_magic(Elf64_Ehdr h)
 		{
 			printf("\n");
 		}
+		else
+		{
+			printf(" ");
+		}
 	}
 }
 /**
