@@ -104,7 +104,11 @@ void print_osabi(Elf64_Ehdr h)
 void print_version(Elf64_Ehdr h)
 {
 	printf("  Version:                           ");
-	printf("%d (current)\n", h.e_ident[EI_VERSION]);
+	printf("%d", h.e_ident[EI_VERSION]);
+	if (h.e_ident[EI_VERSION] == EV_CURRENT)
+		printf(" (current)\n");
+	else
+		printf("\n");
 }
 /**
  * print_magic - function that print magic
