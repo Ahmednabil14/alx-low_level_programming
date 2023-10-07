@@ -42,7 +42,7 @@ void print_type(Elf64_Ehdr h)
 	printf("  Type:                              ");
 	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
 		i = 1;
-	else if (s[i] == ET_NONE)
+	if (s[i] == ET_NONE)
 		printf("NONE (None)\n");
 	else if (s[i] == ET_REL)
 		printf("REL (Relocatable file)\n");
@@ -53,7 +53,7 @@ void print_type(Elf64_Ehdr h)
 	else if (s[i] == ET_CORE)
 		printf("CORE (Core file)\n");
 	else
-		printf("<unknown: %x>\n", h.e_type);
+		printf("<unknown: %x>\n", s[i]);
 }
 /**
  * print_abi - function that print abi version
