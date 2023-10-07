@@ -24,10 +24,10 @@ void print_entry(Elf64_Ehdr h)
 	}
 	if (h.e_ident[EI_CLASS] == ELFCLASS32)
 	{
-		printf("0x%x\n", (unsigned int)h.e_entry);
+		printf("%#x\n", (unsigned int)h.e_entry);
 	}
 	else
-		printf("0x%x\n", (unsigned int)h.e_entry);
+		printf("%#lx\n", h.e_entry);
 }
 /**
  * print_type - function that print type
