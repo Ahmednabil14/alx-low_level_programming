@@ -114,7 +114,7 @@ void print_magic(Elf64_Ehdr h)
 	printf("  Magic:   ");
 	for (i = 0 ; i < EI_NIDENT ; i++)
 	{
-		printf("%02x ", h.e_ident[i]);
+		printf("%02x", h.e_ident[i]);
 		if (i == EI_NIDENT - 1)
 		{
 			printf("\n");
