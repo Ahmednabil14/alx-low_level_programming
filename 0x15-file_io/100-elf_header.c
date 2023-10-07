@@ -73,24 +73,26 @@ void print_osabi(Elf64_Ehdr h)
 	printf("  OS/ABI:                            ");
 	if (h.e_ident[EI_OSABI] == ELFOSABI_NONE)
 		printf("UNIX - System V\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_HPUX)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_HPUX)
 		printf("UNIX - HP-UX\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_NETBSD)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_NETBSD)
 		printf("UNIX - NetBSD\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_LINUX)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_LINUX)
 		printf("UNIX - Linux\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_SOLARIS)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_SOLARIS)
 		printf("UNIX - Solaris\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_IRIX)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_IRIX)
 		printf("UNIX - IRIX\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_FREEBSD)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_FREEBSD)
 		printf("UNIX - FreeBSD\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_TRU64)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_TRU64)
 		printf("UNIX - TRU64\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_ARM)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_ARM)
 		printf("ARM\n");
-	if (h.e_ident[EI_OSABI] == ELFOSABI_STANDALONE)
+	else if (h.e_ident[EI_OSABI] == ELFOSABI_STANDALONE)
 		printf("Standalone App\n");
+	else
+		printf("<unknown: %x>\n", h.e_ident[EI_OSABI]);
 }
 /**
  * print_version - function that print version
