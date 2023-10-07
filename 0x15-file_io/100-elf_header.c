@@ -42,16 +42,18 @@ void print_type(Elf64_Ehdr h)
 	printf("  Type:                              ");
 	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
 		i = 1;
-	if (s[i] == ET_NONE)
+	else if (s[i] == ET_NONE)
 		printf("NONE (None)\n");
-	if (s[i] == ET_REL)
+	else if (s[i] == ET_REL)
 		printf("REL (Relocatable file)\n");
-	if (s[i] == ET_EXEC)
+	else if (s[i] == ET_EXEC)
 		printf("EXEC (Executable file)\n");
-	if (s[i] == ET_DYN)
+	else if (s[i] == ET_DYN)
 		printf("DYN (Shared object file)\n");
-	if (s[i] == ET_CORE)
+	else if (s[i] == ET_CORE)
 		printf("CORE (Core file)\n");
+	else
+		printf("<unknown: %x>\n", h.e_type);
 }
 /**
  * print_abi - function that print abi version
