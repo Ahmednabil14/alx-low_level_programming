@@ -24,7 +24,7 @@ void print_entry(Elf64_Ehdr h)
 	}
 	if (h.e_ident[EI_CLASS] == ELFCLASS32)
 	{
-		printf("%#x\n", (unsigned int)h.e_entry);
+		printf("0x%x\n", (unsigned int)h.e_entry);
 	}
 	else
 		printf("%#lx\n", h.e_entry);
