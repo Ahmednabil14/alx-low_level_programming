@@ -11,14 +11,17 @@ def island_perimeter(grid):
         j = 0
         for obj in ls:
             if obj == 1:
-                if grid[i - 1][j] == 0:
-                    perimeter += 1
-                if grid[i + 1][j] == 0:
-                    perimeter += 1
-                if grid[i][j + 1] == 0:
-                    perimeter += 1
-                if grid[i][j - 1] == 0:
-                    perimeter += 1
+                try:
+                    if grid[i - 1][j] == 0:
+                        perimeter += 1
+                    if grid[i + 1][j] == 0:
+                        perimeter += 1
+                    if grid[i][j + 1] == 0:
+                        perimeter += 1
+                    if grid[i][j - 1] == 0:
+                        perimeter += 1
+                except IndexError:
+                    pass
             j += 1
         i += 1
     return perimeter
